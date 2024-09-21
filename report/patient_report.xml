@@ -1,0 +1,39 @@
+<odoo>
+<record id="action_report_patient_status" model="ir.actions.report">
+    <field name="name">Patient Status Report</field>
+    <field name="model">hms.patient</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_file">hms.report_patient_status</field>
+    <field name="report_name">hms.report_patient_status</field>
+</record>
+    >
+    <template id="patient_report_template">
+        <t t-call="web.html_container">
+            <t t-foreach="doc_ids" t-as="patient_id">
+                <t t-set="patient" t-value="doc_model.browse(patient_id)"/>
+                <div class="page" style="font-family: Arial, sans-serif; padding: 20px;">
+                    <h1 style="text-align: center; color: #2C3E50;">Patient Status Report</h1>
+                    <hr style="border: 1px solid #2C3E50;"/>
+
+                    <div style="margin-bottom: 20px;">
+                        <h2 style="color: #2980B9;">Patient Information</h2>
+                        <p><strong>Name:</strong> <t t-esc="patient.first_name"/> <t t-esc="patient.last_name"/></p>
+                        <p><strong>Birth Date:</strong> <t t-esc="patient.birth_date"/></p>
+                        <p><strong>Age:</strong> <t t-esc="patient.age"/></p>
+                        <p><strong>Blood Type:</strong> <t t-esc="patient.blood_type"/></p>
+                    </div>
+
+                    <div style="margin-bottom: 20px;">
+                        <h2 style="color: #2980B9;">Medical Information</h2>
+                        <p><strong>PCR Ratio:</strong> <t t-esc="patient.cr_ratio"/></p>
+                        <p><strong>Department:</strong> <t t-esc="patient.department_id.name"/></p>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 40px;">
+                        <p style="font-size: 0.9em; color: #7F8C8D;">Generated on: <t t-esc="fields.Date.today()"/></p>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

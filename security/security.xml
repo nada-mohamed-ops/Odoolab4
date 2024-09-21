@@ -1,0 +1,39 @@
+<odoo>
+    <!-- Define a new group -->
+    <record id="group_hms_user" model="res.groups">
+        <field name="name">HMS User</field>
+    </record>
+
+    <!-- Access rights for the patient model -->
+    <record id="hms_patient_access" model="ir.model.access">
+        <field name="name">hms.patient access</field>
+        <field name="model_id" ref="model_hms_patient"/>
+        <field name="group_id" ref="group_hms_user"/>
+        <field name="perm_read" eval="1"/>  <!-- Read access -->
+        <field name="perm_write" eval="1"/> <!-- Write access -->
+        <field name="perm_create" eval="1"/> <!-- Create access -->
+        <field name="perm_unlink" eval="1"/> <!-- Delete access -->
+    </record>
+
+    <!-- Access rights for the department model -->
+    <record id="hms_department_access" model="ir.model.access">
+        <field name="name">hms.department access</field>
+        <field name="model_id" ref="model_hms_department"/>
+        <field name="group_id" ref="group_hms_user"/>
+        <field name="perm_read" eval="1"/>  <!-- Read access -->
+        <field name="perm_write" eval="1"/> <!-- Write access -->
+        <field name="perm_create" eval="1"/> <!-- Create access -->
+        <field name="perm_unlink" eval="1"/> <!-- Delete access -->
+    </record>
+
+    <!-- Define the access for the wizard, if you have one -->
+    <record id="hms_log_history_wizard_access" model="ir.model.access">
+        <field name="name">hms.log.history.wizard access</field>
+        <field name="model_id" ref="model_log_history_wizard"/>
+        <field name="group_id" ref="group_hms_user"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+</odoo>

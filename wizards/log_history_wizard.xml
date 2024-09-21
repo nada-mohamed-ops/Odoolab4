@@ -1,0 +1,26 @@
+<odoo>
+<record id="view_log_history_wizard" model="ir.ui.view">
+        <field name="name">log.history.wizard.form</field>
+        <field name="model">log.history.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Add Log History">
+                <group>
+                    <field name="patient_id" required="1"/>
+                    <field name="description" required="1"/>
+                </group>
+                <footer>
+                    <button string="Save" type="object" name="action_save" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+  <record id="action_log_history_wizard" model="ir.actions.act_window">
+    <field name="name">Add Log History</field>
+    <field name="res_model">log.history.wizard</field>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+</record>
+
+</odoo>
